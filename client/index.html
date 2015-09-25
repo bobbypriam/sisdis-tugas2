@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tugas 2 Sisdis</title>
+</head>
+<body>
+  <div id="wrapper"></div>
+
+  <script type="text/javascript">
+  (function () {
+    function ajaxGet(url, callback) {
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+          callback(request.responseText);
+        }
+      };
+      request.open('GET', url, true);
+      request.send();
+    }
+
+    ajaxGet('http://localhost:8080', function (response) {
+      console.log(response);
+    });
+  })();
+  </script>
+</body>
+</html>
