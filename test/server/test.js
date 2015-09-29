@@ -7,7 +7,7 @@ describe('API Server', function () {
 	describe('Route: /tugas2/server/:image', function () {
 
 		describe('If image exists', function () {
-			var image = 'tes.png';
+			var image = 'chairs.jpg';
 
 			it('should return an object containing "isi_berkas", "lokasi_berkas", and "ukuran_berkas"', function () {
 				handler.getImage({
