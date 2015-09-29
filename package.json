@@ -4,7 +4,7 @@
   "description": "Tugas 2 Sistem Terdistribusi",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node server.js",
     "test": "mocha test/**/*.js"
   },
   "repository": {
