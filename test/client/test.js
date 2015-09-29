@@ -14,7 +14,9 @@ describe('Client', function () {
           params: { image: image }
         }, {
           send: function (html) {
-            throw new Error('not implemented');
+            expect(html).to.contain('id="image"');
+            expect(html).to.contain('id="location"');
+            expect(html).to.contain('id="size"');
           }
         });
       });
@@ -28,7 +30,7 @@ describe('Client', function () {
           params: { image: image }
         }, {
           send: function (html) {
-            throw new Error('not implemented');
+            expect(html).to.contain('id="not-found"');
           }
         });
       });
