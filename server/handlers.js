@@ -1,20 +1,27 @@
+var fs = require('fs');
+var path = require('path');
+
+var IMAGE_DIR = path.join(__dirname, '..', 'images');
+
 var handlers = {};
 
 handlers.getImage = function (req, res) {
-  var existingImages = ['tes.png'];
-  var filename = req.params.image;
+  var imageName = req.params.image;
+  var filePath = path.join(IMAGE_DIR, imageName);
 
-  var image = {};
+  fs.readFile(filePath, function (err, data) {
+    if (err) {
+      return res.json({});
+    }
 
-  if (existingImages.indexOf(filename) !== -1) {
-    image = {
-      isi_berkas: '',
-      lokasi_berkas: '',
+    var base64 = (new Buffer(data, 'binary')).toString('base64');
+
+    res.send({
+      isi_berkas: base64,
+      lokasi_berkas: filePath,
       ukuran_berkas: ''
-    };
-  }
-
-  return res.json(image);
+    });
+  });
 };
 
 module.exports = handlers;
